@@ -98,17 +98,11 @@ void part2()
 		int cnt1 = 0;		
 		getCounts(&cnt0, &cnt1, &ll, j);
 		
-		bool keep0;
 		if(cnt0 > cnt1)
-			keep0 = true;
-		else
-			keep0 = false;
-				
-		if(keep0)
 			updateList(&ll, '0', j);
 		else
 			updateList(&ll, '1', j);
-				
+								
 		if(ll.size()==1)
 		{
 			oxy = ll[0];
@@ -125,16 +119,10 @@ void part2()
 		int cnt1 = 0;		
 		getCounts(&cnt0, &cnt1, &ll, j);
 		
-		bool keep0;
 		if(cnt0 > cnt1)
-			keep0 = false;
-		else
-			keep0 = true;
-				
-		if(keep0)
-			updateList(&ll, '0', j);
-		else
 			updateList(&ll, '1', j);
+		else
+			updateList(&ll, '0', j);
 				
 		if(ll.size()==1)
 		{
