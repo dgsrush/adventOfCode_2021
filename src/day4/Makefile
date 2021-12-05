@@ -1,12 +1,12 @@
 OBJS=\
 	main.o
 
-CFLGS=-c -mwindows -O2 -I ..\..\libdave64
+CFLGS=-c -mconsole -O2 -I ..\..\libdave64
 
 LIBS=
 
 day4.exe : $(OBJS) $(INCS)
-	g++ -o day4.exe -mwindows $(OBJS) $(LIBS) ..\..\libdave64\libdave.a
+	g++ -o day4.exe -mconsole $(OBJS) $(LIBS) ..\..\libdave64\libdave.a
 
 main.o : main.cpp $(INCS)
 	g++ $(CFLGS) main.cpp

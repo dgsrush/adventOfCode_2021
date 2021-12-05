@@ -191,7 +191,7 @@ void calc(bool doDiags)
 			int y2 = lines[i]->p2.y;
 			int xinc = 1;
 			int yinc = 1;
-			if(x1 > x2)	xinc = -1;
+			if(x1 > x2) xinc = -1;
 			if(y1 > y2) yinc = -1;
 			int x = x1;
 			int y = y1;
@@ -228,5 +228,7 @@ int main()
 	readInput();
 	calc(false);
 	calc(true);
+	for(Line *ln : lines)
+		delete ln;
 	return 0;
 }

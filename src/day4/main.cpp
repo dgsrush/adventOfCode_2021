@@ -11,7 +11,7 @@ class Board
 {
 public:
 	Board() {}
-	
+
 	void add(vector<int> &ll)
 	{
 		int ii = 0;
@@ -25,7 +25,7 @@ public:
 			}
 		}
 	}
-	
+
 	void print()
 	{
 		cout << "*******" << endl;
@@ -44,7 +44,7 @@ public:
 		}
 		if(isBingo()) cout << "BINGO" << endl;
 	}
-	
+
 	int calc()
 	{
 		int total = 0;
@@ -58,7 +58,7 @@ public:
 		}
 		return total;
 	}
-	
+
 	void call(int num)
 	{
 		for(int i = 0; i < 5; i++)
@@ -71,9 +71,9 @@ public:
 					break;
 				}
 			}
-		}		
+		}
 	}
-	
+
 	void reset()
 	{
 		for(int i = 0; i < 5; i++)
@@ -84,7 +84,7 @@ public:
 			}
 		}
 	}
-		
+
 	bool isBingo()
 	{
 		for(int i = 0; i < 5; i++)
@@ -94,7 +94,7 @@ public:
 		}
 		return false;
 	}
-	
+
 private:
 	int brd[5][5];
 	bool marked[5][5];
@@ -142,7 +142,7 @@ void readInput()
 	inf.readLine(ll);
 	string delim = ",";
 	tokenize(ll, delim, randm);
-	
+
 	//parse bingo boards
 	delim = " ";
 	while(inf.readLine(ll))
@@ -155,7 +155,7 @@ void readInput()
 			{
 				inf.readLine(ll);
 				tokenize(ll, delim, brd);
-			}			
+			}
 			Board *b = new Board();
 			b->add(brd);
 			boards.push_back(b);
@@ -173,10 +173,10 @@ void call(int num)
 void part1()
 {
 	readInput();
-	
+
 	for(int r : randm)
 	{
-		call(r);				
+		call(r);
 		for(Board *b : boards)
 		{
 			if(b->isBingo())
@@ -196,7 +196,7 @@ void part2()
 {
 	for(Board *b : boards)
 		b->reset();
-	
+
 	Board *final = NULL;
 	int finalr = 0;
 	for(int r : randm)
@@ -231,5 +231,7 @@ int main()
 {
 	part1();
 	part2();
+	for(Board *p : boards)
+		delete p;
 	return 0;
 }
