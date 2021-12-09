@@ -64,7 +64,6 @@ public:
 		output[1] = xx[11];
 		output[2] = xx[12];
 		output[3] = xx[13];
-
 		for(int i = 0; i < 10; i++)
 			sort(signal[i].begin(), signal[i].end());
 		for(int i = 0; i < 4; i++)
@@ -74,8 +73,7 @@ public:
 	void print()
 	{
 		for(int i = 0; i < 10; i++)
-			cout << signal[i] << "=" << decode[i] << " ";
-		cout << " *** " << endl;
+			cout << signal[i] << "=" << decode[i] << " *** ";
 		for(int i = 0; i < 4; i++)
 			cout << output[i] << " ";
 		cout << endl;
@@ -102,10 +100,7 @@ public:
 	{
 		int cnt = 0;
 		for(int i = 0; i < 4; i++)
-		{
-			char c = four[i];
-			if(ss.find(c) != string::npos) cnt++;
-		}
+			if(ss.find(four[i]) != string::npos) cnt++;
 		if(cnt == need) return true;
 		return false;
 	}
@@ -133,66 +128,30 @@ public:
 			else if(signal[i].size() == 7)
 				decode[i] = 8;
 		}
-		for(int i=0;i<10;i++)
+
+		for(int i = 0; i < 10; i++)
 		{
 			if(signal[i].size() == 5 && containsOnes(signal[i]))
-			{
 				decode[i] = 3;
-			}
 			else if(signal[i].size() == 5 && containsElementsOfFour(signal[i], 2))
-			{
 				decode[i] = 2;
-			}
 			else if(signal[i].size() == 5 && containsElementsOfFour(signal[i], 3))
-			{
 				decode[i] = 5;
-			}
 			else if(signal[i].size() == 6 && !containsOnes(signal[i]))
-			{
 				decode[i] = 6;
-			}
 			else if(signal[i].size() == 6 && containsElementsOfFour(signal[i], 3))
-			{
 				decode[i] = 0;
-			}
 			else if(signal[i].size() == 6 && containsElementsOfFour(signal[i], 4))
-			{
 				decode[i] = 9;
-			}
 		}
 
 		int total = 0;
 		for(int i = 0; i < 10; i++)
 		{
-			if(signal[i] == output[0])
-			{
-				total += decode[i] * 1000;
-				break;
-			}
-		}
-		for(int i = 0; i < 10; i++)
-		{
-			if(signal[i] == output[1])
-			{
-				total += decode[i] * 100;
-				break;
-			}
-		}
-		for(int i = 0; i < 10; i++)
-		{
-			if(signal[i] == output[2])
-			{
-				total += decode[i] * 10;
-				break;
-			}
-		}
-		for(int i = 0; i < 10; i++)
-		{
-			if(signal[i] == output[3])
-			{
-				total += decode[i];
-				break;
-			}
+			if(signal[i] == output[0]) total += decode[i] * 1000;
+			if(signal[i] == output[1]) total += decode[i] * 100;
+			if(signal[i] == output[2]) total += decode[i] * 10;
+			if(signal[i] == output[3]) total += decode[i];
 		}
 		return total;
 	}
@@ -202,8 +161,8 @@ private:
 	int decode[10];
 	string output[4];
 
-	char one[2]={' ',' '};
-	char four[4]={' ',' ',' ',' '};
+	char one[2] = {' ',' '};
+	char four[4] = {' ',' ',' ',' '};
 };
 
 //////////////////////////////////////////////////
