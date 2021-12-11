@@ -21,7 +21,7 @@ public:
 		justFlashed = false;
 	}
 
-	void set(int xx, int yy, int ll) { x = xx; y = yy; lvl = ll; }
+	void set(int ll) { lvl = ll; }
 
 	void inc()
 	{
@@ -50,7 +50,7 @@ public:
 	}
 
 private:
-	int x, y, lvl;
+	int lvl;
 	bool flashed;
 	bool justFlashed;
 };
@@ -130,7 +130,7 @@ void readInput()
 			int x = 0;
 			for(char c : ln)
 			{
-				grid[x][y].set(x, y, c-48);
+				grid[x][y].set(c - 48);
 				x++;
 			}
 			y++;
@@ -147,7 +147,7 @@ int main()
 
 	for(int i = 0; i < 100; i++)
 		step(i + 1);
-	cout << "PART1 answer = " << fcnt << endl; //1634
+	cout << "PART1 answer = " << fcnt << endl;
 
 	/////
 
@@ -156,5 +156,5 @@ int main()
 		step(i + 1);
 		if(frow >= 0) break;
 	}
-	cout << "PART2 answer = " << frow << endl; //210
+	cout << "PART2 answer = " << frow << endl;
 }
