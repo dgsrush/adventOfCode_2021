@@ -140,16 +140,3 @@ int main()
 
 	cout << "PART1 answer = " << max - min << endl;
 }
-
-/*
-Sample:
-Template:     NNCB
-After step 1: NCNBCHB
-After step 2: NBCCNBBBCBHCB
-After step 3: NBBBCNCCNBBNBNBBCHBHHBCHB
-After step 4: NBBNBNBBCCNBCNCCNBBNBBNBBBNBBNBBCBHCBHHNHCBBCBHCB
-After step 10: 1749 - 161 = 1588
-
-Real data answer:
-3535 - 588 = 2947
-*/
